@@ -48,14 +48,11 @@
             @endpush
 
             @section('content')
-            
-            <div class="col-lg-2">
-                <div class="panel panel-inverse" data-sortable-id="form-slider-switcher-2">
-                    <div class="panel-heading">
-                        <h2 class="text-center panel-title">Filter Data Plant</h2>
-                    </div>
-                    <div class="col-lg-12 col-md-12 mt-1 mb-1">
-                        <div class="panel-body panel-form">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">Filter Data Plant</div>
+                        <div class="panel-body">
                             <form class="form-horizontal form-bordered" action="#" id="frm-filter">
                                 @csrf
                                 <div class="form-group row bg-green">
@@ -67,10 +64,6 @@
                                             <option value="{{ $value }}" @if(request('plant')==$value) selected @endif>
                                                 {{ $value }}</option>
                                             @endforeach
-                                            {{-- <option value="BYH-01" @if(request('plant') == 'BYH-01') selected @endif>BYH-01</option>
-                                                <option value="MDN-01" @if(request('plant') == 'MDN-01') selected @endif>MDN-01</option>
-                                                <option value="PNT-01" @if(request('plant') == 'PNT-01') selected @endif>PNT-01</option> --}}
-
                                         </select>
                                     </div>
                                 </div>
@@ -105,110 +98,92 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="panel-heading">Weigbridge All Plant</div>
+                        <div class="panel-body">
+                            <div class="widget widget-stats bg-green">
+                                <div class="vertical-box">
+                                    <!-- begin event-list -->
+                                    <div class="vertical-box-column p-r-35 d-none d-lg-table-cell" style="width: 235px">
+                                        <div id="external-events" class="fc-event-list">
+                                            <h5 class="text-center m-t-0 m-b-15">TRANSAKSI HARIAN</h5>
+                                            <b>
+                                                <div class="fc-event" data-color="#00acac">
+                                                    <div class="fc-event-icon"><i
+                                                            class="fas fa-circle fa-fw f-s-15 text-success"></i><span>
+                                                            120</span></div> BENGKULU
+                                                </div>
+                                            </b>
+    
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel panel-inverse" data-sortable-id="form-slider-switcher-2">
-                    <!-- begin panel-heading -->
-                    <div class="panel-heading">
-
-                        <h4 class="panel-title">Transaksi WB</h4>
-                    </div>
-                    <!-- end panel-heading -->
-                    <div class="col-lg-12 col-md-12 mb-0 mt-0">
-                        <div class="widget widget-stats bg-green">
-                            <div class="stats-icon"><i class="fa fa-truck"></i></div>
-                            <div class="stats-info">
-                                <h4 class="text-black">TRUCK ANTRI</h4>
-                                {{-- <p>{{ App\Models\User::count() ?? '0' }}</p> --}}
-                                <p>25</p>
+                <div class="col-md-6">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+    
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
+                                    data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
+                                    data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+    
                             </div>
+                            <h4 class="panel-title" id="title">Grafik</h4>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="line-chart" data-render="chart-js"></canvas>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12 mb-0 mt-0">
-                        <div class="widget widget-stats bg-orange">
-                            <div class="stats-icon"><i class="fa fa-truck"></i></div>
-                            <div class="stats-info">
-                                <h4 class="text-black">TRUCK IN</h4>
-                                <p>20</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 mb-0 mt-0">
-                        <div class="widget widget-stats bg-red">
-                            <div class="stats-icon"><i class="fa fa-truck"></i></div>
-                            <div class="stats-info">
-                                <h4 class="text-black">TRUCK OUT</h4>
-                                <p>20</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-
-            <div class="col-lg-8">
-                <div class="panel panel-inverse">
-                    <div class="panel-heading">
-                        <div class="panel-heading-btn">
-
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
-                                data-click="panel-reload"><i class="fa fa-redo"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
-                                data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-
+                <div class="col-md-3">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">User</div>
+                        <div class="panel-body">
+                            <div class="widget widget-stats bg-primary">
+                                <div class="stats-icon"><i class="fa fa-users"></i></div>
+                                <div class="stats-info">
+                                    <h4 class="text-black">User</h4>
+                                    <p>{{ App\Models\User::count() ?? '0' }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="panel-title">Grafik</h4>
-                    </div>
-                    <div class="panel-body">
-                        <canvas id="line-chart" data-render="chart-js"></canvas>
+                        <div class="panel-heading">Transaksi WB</div>
+                        <div class="panel-body">
+                            <div class="widget widget-stats bg-green">
+                                <div class="stats-icon"><i class="fa fa-truck"></i></div>
+                                <div class="stats-info">
+                                    <h4 class="text-black">TRUCK ANTRI</h4>
+                                    {{-- <p>{{ App\Models\User::count() ?? '0' }}</p> --}}
+                                    <p>25</p>
+                                </div>
+                            </div>
+                            <div class="widget widget-stats bg-orange">
+                                <div class="stats-icon"><i class="fa fa-truck"></i></div>
+                                <div class="stats-info">
+                                    <h4 class="text-black">TRUCK IN</h4>
+                                    <p>20</p>
+                                </div>
+                            </div>
+                            <div class="widget widget-stats bg-red">
+                                <div class="stats-icon"><i class="fa fa-truck"></i></div>
+                                <div class="stats-info">
+                                    <h4 class="text-black">TRUCK OUT</h4>
+                                    <p>20</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-2">
-                <div class="panel panel-inverse" data-sortable-id="form-slider-switcher-2">
-                    <div class="panel-heading">
-                        <h4 class="text-center panel-title">User</h4>
-                    </div>
-                    <div class="col-lg-12 col-md-12 mb-0 mt-0">
-                        <div class="widget widget-stats bg-primary">
-                            <div class="stats-icon"><i class="fa fa-users"></i></div>
-                            <div class="stats-info">
-                                <h4 class="text-black">User</h4>
-                                <p>{{ App\Models\User::count() ?? '0' }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-inverse" data-sortable-id="form-slider-switcher-2">
-                    <div class="panel-heading">
-
-                        <h2 class="text-center panel-title">Weigbridge All Plant</h2>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12">
-                        <div class="widget widget-stats bg-green">
-                            <div class="vertical-box">
-                                <!-- begin event-list -->
-                                <div class="vertical-box-column p-r-35 d-none d-lg-table-cell" style="width: 235px">
-                                    <div id="external-events" class="fc-event-list">
-                                        <h5 class="text-center m-t-0 m-b-15">TRANSAKSI HARIAN</h5>
-                                        <b>
-                                            <div class="fc-event" data-color="#00acac">
-                                                <div class="fc-event-icon"><i
-                                                        class="fas fa-circle fa-fw f-s-15 text-success"></i><span>
-                                                        120</span></div> BENGKULU
-                                            </div>
-                                        </b>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
             @endsection
@@ -234,49 +209,48 @@
                         // console.log(picker.endDate.format('YYYY-MM-DD'));
                     });
 
-                        $('#filter_data').on('click',function(){
-                            let frm = $('#frm-filter').serializeArray();
-                            let data_post = frm.concat([{start,end}]);
-                            // callback
-                            req_data(data_post,function(a){
-                                 const dataset =  a.map(function(v,i) {
-                                        return {
-                                            lcl:parseFloat(v.LCL).toFixed(2),
-                                            ucl:parseFloat(v.UCL).toFixed(2),
-                                            variance:parseFloat(v.Variance).toFixed(2),
-                                            date:v.date
-                                        }
-                                    });
-                                console.log(dataset)
-                                const dd = [
-                                        {
-                                            label: 'LCL',
-                                            borderWidth: 2,
-                                            borderColor: COLOR_PURPLE,
-                                            backgroundColor: COLOR_PURPLE_TRANSPARENT_3,
-                                            data:dataset.map(function(a){ return a.lcl })
-                                        },
-                                        {
-                                            label: 'UCL',
-                                            borderWidth: 2,
-                                            borderColor: COLOR_YELLOW,
-                                            backgroundColor: COLOR_YELLOW_TRANSPARENT_3,
-                                            data:dataset.map(function(a){ return a.ucl })
-                                        },
-                                        {
-                                            label: 'VARIANCE',
-                                            borderWidth: 2,
-                                            borderColor: COLOR_RED,
-                                            backgroundColor: COLOR_RED_TRANSPARENT_3,
-                                            data:dataset.map(function(a){ return a.variance })
-                                        }
-                                ]
-                                const label = 'Data Sheet tanggal '+start+' s/d '+end;
-                                $('.panel-title').html(label)
-                                const dateLabel = dataset.map(function(a){ return a.date })
-                                generate_chart(dateLabel,dd)
-                            });
+                    $('#filter_data').on('click',function(){
+                        let frm = $('#frm-filter').serializeArray();
+                        let data_post = frm.concat([{start,end}]);
+                        // callback
+                        req_data(data_post,function(a){
+                                const dataset =  a.map(function(v,i) {
+                                    return {
+                                        lcl:parseFloat(v.LCL).toFixed(2),
+                                        ucl:parseFloat(v.UCL).toFixed(2),
+                                        variance:parseFloat(v.Variance).toFixed(2),
+                                        date:v.date
+                                    }
+                                });
+                            const dd = [
+                                    {
+                                        label: 'LCL',
+                                        borderWidth: 2,
+                                        borderColor: COLOR_PURPLE,
+                                        backgroundColor: COLOR_PURPLE_TRANSPARENT_3,
+                                        data:dataset.map(function(a){ return a.lcl })
+                                    },
+                                    {
+                                        label: 'UCL',
+                                        borderWidth: 2,
+                                        borderColor: COLOR_YELLOW,
+                                        backgroundColor: COLOR_YELLOW_TRANSPARENT_3,
+                                        data:dataset.map(function(a){ return a.ucl })
+                                    },
+                                    {
+                                        label: 'VARIANCE',
+                                        borderWidth: 2,
+                                        borderColor: COLOR_RED,
+                                        backgroundColor: COLOR_RED_TRANSPARENT_3,
+                                        data:dataset.map(function(a){ return a.variance })
+                                    }
+                            ]
+                            const label = 'Data Sheet tanggal '+start+' s/d '+end;
+                            $('#title').html(label)
+                            const dateLabel = dataset.map(function(a){ return a.date })
+                            generate_chart(dateLabel,dd)
                         });
+                    });
                 });
 
                 // request function
@@ -303,8 +277,6 @@
                 // end jquery
                 let generate_chart = function(label,dd)
                 {
-                    console.log
-
                     // console.log('data chart', lineChartData)
                     var ctx = document.getElementById('line-chart').getContext('2d');
                     var lineChart = new Chart(ctx, {
